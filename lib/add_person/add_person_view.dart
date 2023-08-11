@@ -97,13 +97,18 @@ class _PersonAppState extends State<PersonApp> {
                 addname = textname.text;
                 addmail = textemail.text;
                 addnumber = textphone.text;
-
-                person.collection("Person").add({
+           person.collection("Person").doc(addname).set({
+                  
                   "PersonName": addname,
                   "PersonNumber": addnumber,
                   "PersonEmail": addmail,
                   "PersonSelect": false
                 });
+                Route routegeneralview =
+                            MaterialPageRoute(builder: (context) {
+                          return PersonApp();
+                        });
+                        Navigator.pop(context, routegeneralview);
                 setState(() {});
               },
               child: Container(

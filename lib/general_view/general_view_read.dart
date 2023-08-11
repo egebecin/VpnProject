@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
  Future<void> updatePersonSelect(String personName, bool? newValue) async {
     await FirebaseFirestore.instance
         .collection('Person')
-        .doc("C9hv88pwCRDNuUYqjQka")
+        .doc(personName)
         .update({'PersonSelect': newValue});
   }
 
