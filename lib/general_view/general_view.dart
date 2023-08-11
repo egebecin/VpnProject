@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:vpnapp/add_person/add_person_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vpnapp/general_view/general_view_read.dart';
 
 void main() {
   runApp(SmsReadView());
@@ -39,16 +40,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool isOn = false;
   int i = 0;
-  var db = FirebaseFirestore.instance;
+  
 
-  dataread() async {}
-  List<ContactView> contacts = [
-    ContactView("Ege", "egebecin2@gmail.com", "05536852708", false),
-  ];
+  
+  List<ContactView> contacts = [ContactView("Ege","sadsa","sadsad",false)];
 
   @override
   Widget build(BuildContext context) {
-    var personref = db.collection("Person");
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -91,8 +90,12 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  for (i = 0; i < contacts.length; i++) PadCheckB(contacts[i]),
+                  for (i = 0; i < contacts.length; i++) 
+                  PadCheckB(contacts[i]),
+                  
+                  
                 ],
+                
               ),
             ),
           ),
@@ -116,19 +119,7 @@ class _HomeState extends State<Home> {
                       ),
                       iconSize: 100,
                       color: Colors.green[700]))),
-          Expanded(
-              child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: IconButton(
-                      onPressed: () async {
-                        personref.get();
-                      },
-                      icon: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(Icons.refresh_outlined),
-                      ),
-                      iconSize: 100,
-                      color: Colors.green[700])))
+          
         ]),
       )),
     );
